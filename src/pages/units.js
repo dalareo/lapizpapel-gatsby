@@ -7,18 +7,18 @@ import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 import Button from "../components/button"
 
-class Blog extends React.Component {
+class Unit extends React.Component {
   render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
-    const posts = data.allMdx.edges
+    const units = data.allMdx.edges
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO title="All posts" />
+        <SEO title="All units" />
         <Bio />
         <div style={{ margin: "20px 0 40px" }}>
-          {posts.map(({ node }) => {
+          {units.map(({ node }) => {
             const title = node.frontmatter.title || node.fields.slug
             return (
               <div key={node.fields.slug}>
@@ -29,7 +29,7 @@ class Blog extends React.Component {
                 >
                   <Link
                     style={{ boxShadow: `none` }}
-                    to={`blog${node.fields.slug}`}
+                    to={`units${node.fields.slug}`}
                   >
                     {title}
                   </Link>
@@ -45,14 +45,14 @@ class Blog extends React.Component {
           })}
         </div>
         <Link to="/">
-          <Button marginTop="85px">Go Home</Button>
+          <Button marginTop="85px">Inicio</Button>
         </Link>
       </Layout>
     )
   }
 }
 
-export default Blog
+export default Unit
 
 export const pageQuery = graphql`
   query {

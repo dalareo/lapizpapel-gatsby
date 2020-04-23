@@ -1,12 +1,12 @@
 module.exports = {
   siteMetadata: {
     // edit below
-    title: `Gatsby Starter Personal Blog`,
-    author: `Kyle Matthews`,
-    description: `A starter personal blog with styled components, dark mode, and Netlify CMS.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    title: `Lapiz Papel`,
+    author: `David A. Lareo`,
+    description: `Una propuesta de e-learning de bajo coste.`,
+    siteUrl: `localhost:8000/units`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `dalareo`,
     },
   },
   plugins: [
@@ -20,8 +20,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`,
+        path: `${__dirname}/content/units`,
+        name: `units`,
       },
     },
     {
@@ -70,8 +70,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Lapiz y Papel`,
+        short_name: `LapizPapel`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,

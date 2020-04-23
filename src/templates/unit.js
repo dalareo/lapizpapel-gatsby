@@ -7,19 +7,19 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
 
-class BlogPostTemplate extends React.Component {
+class UnitTemplate extends React.Component {
   render() {
-    const post = this.props.data.mdx
+    const unit = this.props.data.mdx
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
-          title={post.frontmatter.title}
-          description={post.frontmatter.description || post.excerpt}
+          title={unit.frontmatter.title}
+          description={unit.frontmatter.description || unit.excerpt}
         />
-        <h1>{post.frontmatter.title}</h1>
+        <h1>{unit.frontmatter.title}</h1>
         <p
           style={{
             ...scale(-1 / 5),
@@ -28,9 +28,9 @@ class BlogPostTemplate extends React.Component {
             marginTop: rhythm(-1),
           }}
         >
-          {post.frontmatter.date}
+          {unit.frontmatter.date}
         </p>
-        <MDXRenderer>{post.body}</MDXRenderer>
+        <MDXRenderer>{unit.body}</MDXRenderer>
         <hr
           style={{
             marginBottom: rhythm(1),
@@ -49,14 +49,14 @@ class BlogPostTemplate extends React.Component {
         >
           <li>
             {previous && (
-              <Link to={`blog${previous.fields.slug}`} rel="prev">
+              <Link to={`units${previous.fields.slug}`} rel="prev">
                 ← {previous.frontmatter.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
-              <Link to={`blog${next.fields.slug}`} rel="next">
+              <Link to={`units${next.fields.slug}`} rel="next">
                 {next.frontmatter.title} →
               </Link>
             )}
@@ -67,10 +67,10 @@ class BlogPostTemplate extends React.Component {
   }
 }
 
-export default BlogPostTemplate
+export default UnitTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query UnitBySlug($slug: String!) {
     site {
       siteMetadata {
         title
