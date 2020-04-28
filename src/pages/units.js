@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import { login, logout, isAuthenticated } from "../utils/auth"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -9,6 +10,10 @@ import Button from "../components/button"
 
 class Unit extends React.Component {
   render() {
+    if (!isAuthenticated()) {
+      login()
+      return <p>Redirecting to login...</p>
+    }
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
     const units = data.allMdx.edges
@@ -46,6 +51,12 @@ class Unit extends React.Component {
         </div>
         <Link to="/">
           <Button marginTop="85px">Inicio</Button>
+        </Link>
+        <Link to="#logout" onClick={e => {
+            e.preventDefault()
+            logout()
+          }}>
+            <Button marginTop="5px">Salir</Button>
         </Link>
       </Layout>
     )
