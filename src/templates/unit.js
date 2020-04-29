@@ -5,6 +5,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Button from "../components/button"
 import { rhythm, scale } from "../utils/typography"
 
 class UnitTemplate extends React.Component {
@@ -50,14 +51,14 @@ class UnitTemplate extends React.Component {
           <li>
             {previous && (
               <Link to={`units${previous.fields.slug}`} rel="prev">
-                ← {previous.frontmatter.title}
+                <Button>← {previous.frontmatter.title}</Button>
               </Link>
             )}
           </li>
           <li>
             {next && (
               <Link to={`units${next.fields.slug}`} rel="next">
-                {next.frontmatter.title} →
+                <Button>{next.frontmatter.title} →</Button>
               </Link>
             )}
           </li>

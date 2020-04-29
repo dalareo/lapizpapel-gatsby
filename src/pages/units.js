@@ -48,16 +48,35 @@ class Unit extends React.Component {
             )
           })}
         </div>
-        <Link to="/">
-          <Button marginTop="85px">Inicio</Button>
-        </Link>
-        <Link onClick={e => {
-            e.preventDefault()
-            navigate('#logout')
-            logout()
-          }}>
-            <Button marginTop="5px">Salir</Button>
-        </Link>
+        <ul
+          style={{
+            display: `flex`,
+            flexWrap: `wrap`,
+            justifyContent: `space-between`,
+            listStyle: `none`,
+            padding: 0,
+          }}
+        >
+          <li>
+            <Link to="/">
+              <Button marginTop="5px">Inicio</Button>
+            </Link>
+          </li>
+          <li>
+            <a href="https://awesome-brattain-e95477.netlify.app/admin">
+              <Button marginTop="5px">Admin</Button>
+            </a>
+          </li>
+          <li>
+            <Link onClick={e => {
+              e.preventDefault()
+              navigate('#logout')
+              logout()
+            }}>
+              <Button marginTop="5px">Salir</Button>
+            </Link>
+          </li>
+        </ul>
       </Layout>
     )
   }
