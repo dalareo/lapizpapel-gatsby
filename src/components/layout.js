@@ -26,7 +26,7 @@ class Layout extends React.Component {
               textDecoration: `none`,
               color: `inherit`,
             }}
-            to="/"
+            to={location.pathname === unitPath ? `/units/` : `/`}
           >
             {title}
           </Link>
@@ -46,7 +46,7 @@ class Layout extends React.Component {
               textDecoration: `none`,
               color: `inherit`,
             }}
-            to="/"
+            to={`/units/`}
           >
             {title}
           </Link>
