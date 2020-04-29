@@ -5,12 +5,11 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Button from "../components/button"
 
-class IndexPage extends React.Component {
-  render() {
+function IndexPage ({ location }) {
     const siteTitle = "Lapiz y Papel"
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <Layout location={location} title={siteTitle}>
         <SEO
           title="Inicio"
           keywords={[`cms`, `gatsby`]}
@@ -28,6 +27,5 @@ class IndexPage extends React.Component {
       </Layout>
     )
   }
-}
 
 export default IndexPage

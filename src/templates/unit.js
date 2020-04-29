@@ -8,64 +8,62 @@ import SEO from "../components/seo"
 import Button from "../components/button"
 import { rhythm, scale } from "../utils/typography"
 
-class UnitTemplate extends React.Component {
-  render() {
-    const unit = this.props.data.mdx
-    const siteTitle = this.props.data.site.siteMetadata.title
-    const { previous, next } = this.props.pageContext
+function UnitTemplate ({ data, pageContext, location }) {
+  const unit = data.mdx
+  const siteTitle = data.site.siteMetadata.title
+  const { previous, next } = pageContext
 
-    return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO
-          title={unit.frontmatter.title}
-          description={unit.frontmatter.description || unit.excerpt}
-        />
-        <h1>{unit.frontmatter.title}</h1>
-        <p
-          style={{
-            ...scale(-1 / 5),
-            display: `block`,
-            marginBottom: rhythm(1),
-            marginTop: rhythm(-1),
-          }}
-        >
-          {unit.frontmatter.date}
-        </p>
-        <MDXRenderer>{unit.body}</MDXRenderer>
-        <hr
-          style={{
-            marginBottom: rhythm(1),
-          }}
-        />
-        <Bio />
+  return (
+    <Layout location={location} title={siteTitle}>
+      <SEO
+        title={unit.frontmatter.title}
+        description={unit.frontmatter.description || unit.excerpt}
+      />
+      <h1>{unit.frontmatter.title}</h1>
+      <p
+        style={{
+          ...scale(-1 / 5),
+          display: `block`,
+          marginBottom: rhythm(1),
+          marginTop: rhythm(-1),
+        }}
+      >
+        {unit.frontmatter.date}
+      </p>
+      <MDXRenderer>{unit.body}</MDXRenderer>
+      <hr
+        style={{
+          marginBottom: rhythm(1),
+        }}
+      />
+      <Bio />
 
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous && (
-              <Link to={`units${previous.fields.slug}`} rel="prev">
-                <Button>← {previous.frontmatter.title}</Button>
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={`units${next.fields.slug}`} rel="next">
-                <Button>{next.frontmatter.title} →</Button>
-              </Link>
-            )}
-          </li>
-        </ul>
-      </Layout>
-    )
-  }
+      <ul
+        style={{
+          display: `flex`,
+          flexWrap: `wrap`,
+          justifyContent: `space-between`,
+          listStyle: `none`,
+          padding: 0,
+        }}
+      >
+        <li>
+          {previous && (
+            <Link to={`units${previous.fields.slug}`} rel="prev">
+              <Button>← {previous.frontmatter.title}</Button>
+            </Link>
+          )}
+        </li>
+        <li>
+          {next && (
+            <Link to={`units${next.fields.slug}`} rel="next">
+              <Button>{next.frontmatter.title} →</Button>
+            </Link>
+          )}
+        </li>
+      </ul>
+    </Layout>
+  )
 }
 
 export default UnitTemplate

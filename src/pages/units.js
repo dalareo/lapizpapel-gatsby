@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, graphql, navigate } from "gatsby"
+import { Link, graphql } from "gatsby"
 import { login, logout, isAuthenticated } from "../utils/auth"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -7,18 +7,16 @@ import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 import Button from "../components/button"
 
-class Unit extends React.Component {
-  render() {
+function Unit ({ data, location}) {
     if (!isAuthenticated()) {
       login()
       return <p>Redirecting to login...</p>
     }
-    const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
     const units = data.allMdx.edges
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <Layout location={location} title={siteTitle}>
         <SEO title="All units" />
         <Bio />
         <div style={{ margin: "20px 0 40px" }}>
@@ -68,19 +66,17 @@ class Unit extends React.Component {
             </a>
           </li>
           <li>
-            <Link onClick={e => {
+            <a href="#logout" onClick={e => {
               e.preventDefault()
-              navigate('#logout')
               logout()
             }}>
               <Button marginTop="5px">Salir</Button>
-            </Link>
+            </a>
           </li>
         </ul>
       </Layout>
     )
   }
-}
 
 export default Unit
 
