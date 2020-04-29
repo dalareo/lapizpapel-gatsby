@@ -39,7 +39,7 @@ const auth = isBrowser
   
   const setSession = (cb = () => {}) => (err, authResult) => {
     if (err) {
-      navigate("/")
+      navigate('/')
       cb()
       return
     }
@@ -51,7 +51,7 @@ const auth = isBrowser
       tokens.expiresAt = expiresAt
       user = authResult.idTokenPayload
       localStorage.setItem("isLoggedIn", true)
-      navigate("/units")
+      navigate('/units')
       cb()
     }
   }
