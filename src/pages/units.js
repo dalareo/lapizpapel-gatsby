@@ -1,7 +1,6 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { Link, graphql, navigate } from "gatsby"
 import { login, logout, isAuthenticated } from "../utils/auth"
-
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -52,8 +51,9 @@ class Unit extends React.Component {
         <Link to="/">
           <Button marginTop="85px">Inicio</Button>
         </Link>
-        <Link to="#logout" onClick={e => {
+        <Link onClick={e => {
             e.preventDefault()
+            navigate('#logout')
             logout()
           }}>
             <Button marginTop="5px">Salir</Button>
