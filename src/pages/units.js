@@ -1,11 +1,33 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import { login, logout, isAuthenticated } from "../utils/auth"
+//import { MdxCreatorPlugin } from "gatsby-tinacms-mdx"
+
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 import Button from "../components/button"
+
+/* const CreateUnitPlugin = new MdxCreatorPlugin({
+  label: 'New Unit',
+  filename: form => {
+    return form.filename
+  },
+  fields: [
+    {
+      name: 'filename',
+      component: 'text',
+      label: 'Filename',
+      placeholder: 'content/units/new-unit.md',
+      description:
+        'The full path to the new markdown file, relative to the repository root.',
+    },
+  ],
+  filename: form => {
+    return form.filename
+  },
+}) */
 
 function Unit ({ data, location}) {
     if (!isAuthenticated()) {
@@ -78,6 +100,7 @@ function Unit ({ data, location}) {
     )
   }
 
+//export default ( Unit, CreateUnitPlugin)
 export default Unit
 
 export const pageQuery = graphql`

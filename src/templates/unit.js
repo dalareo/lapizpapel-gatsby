@@ -1,6 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import {mdxForm} from "gatsby-tinacms-mdx"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -66,7 +67,43 @@ function UnitTemplate ({ data, pageContext, location }) {
   )
 }
 
-export default UnitTemplate
+const UnitForm = {
+  label: 'Unit',
+  fields: [
+    {
+      label: 'Title',
+      name: 'rawFrontmatter.title',
+      description: 'Enter the title of the unit here',
+      component: 'text',
+    },
+    {
+      label: 'Date',
+      name: 'rawFrontmatter.date',
+      description: 'Enter the creation date of the unit here',
+      component: 'text',
+    },
+    {
+      label: 'Thumbnail',
+      name: 'rawFrontmatter.thumbnail',
+      description: 'Add a thumbnail to the unit here',
+      component: 'text',
+    },
+    {
+      label: 'Description',
+      name: 'rawFrontmatter.description',
+      description: 'Enter the post description',
+      component: 'textarea',
+    },
+    {
+      label: 'Body',
+      name: 'rawMdxBody',
+      description: 'Enter the post description',
+      component: 'markdown',
+    },
+  ],
+}
+
+export default mdxForm(UnitTemplate, UnitForm)
 
 export const pageQuery = graphql`
   query UnitBySlug($slug: String!) {
@@ -80,6 +117,7 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       body
+      ...TinaMdx
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
