@@ -4,7 +4,7 @@ module.exports = {
     title: `Lapiz Papel`,
     author: `David A. Lareo`,
     description: `Una propuesta de e-learning de bajo coste.`,
-    siteUrl: `localhost:8000/units`,
+    siteUrl: process.env.GATSBY_APP_URL,
     social: {
       twitter: `dalareo`,
     },
@@ -16,6 +16,7 @@ module.exports = {
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-feed-mdx`,
+    `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-plugin-netlify-cms`,
       options: {

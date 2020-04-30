@@ -21,9 +21,26 @@ function IndexPage ({ location }) {
         <p>Esta es una prueba de concepto para un LMS low-cost.</p>
         <p>La página está construida con Gatsby, el contenido se gestiona con Netlify CMS</p>
         <p>¡Construyamos algo maravilloso!</p>
-        <Link to="/units/">
-          <Button marginTop="35px">Contenidos</Button>
-        </Link>
+        <ul
+          style={{
+            display: `flex`,
+            flexWrap: `wrap`,
+            justifyContent: `space-between`,
+            listStyle: `none`,
+            padding: 0,
+          }}
+        >
+          <li>
+            <Link to="/units/">
+              <Button marginTop="35px">Contenidos</Button>
+            </Link>
+          </li>
+          <li>
+            <Link to="/editor/">
+              <Button marginTop="35px">Editor</Button>
+            </Link>
+          </li>
+        </ul>
       </Layout>
     )
   }
