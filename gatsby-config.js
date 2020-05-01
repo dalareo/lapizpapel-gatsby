@@ -11,11 +11,11 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-less`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-feed-mdx`,
     `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-plugin-netlify-cms`,
@@ -94,12 +94,6 @@ module.exports = {
         display: `minimal-ui`,
         // edit below
         icon: `content/assets/gatsby-icon.png`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
       },
     },
   ],

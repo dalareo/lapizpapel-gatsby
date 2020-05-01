@@ -6,7 +6,6 @@ import { login, logout, isAuthenticated } from "../utils/auth"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
 import Button from "../components/button"
 
 /* const CreateUnitPlugin = new MdxCreatorPlugin({
@@ -41,18 +40,13 @@ function Unit ({ data, location}) {
       <Layout location={location} title={siteTitle}>
         <SEO title="All units" />
         <Bio />
-        <div style={{ margin: "20px 0 40px" }}>
+        <div>
           {units.map(({ node }) => {
             const title = node.frontmatter.title || node.fields.slug
             return (
               <div key={node.fields.slug}>
-                <h3
-                  style={{
-                    marginBottom: rhythm(1 / 4),
-                  }}
-                >
+                <h3>
                   <Link
-                    style={{ boxShadow: `none` }}
                     to={`units${node.fields.slug}`}
                   >
                     {title}
@@ -68,34 +62,18 @@ function Unit ({ data, location}) {
             )
           })}
         </div>
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            <Link to="/">
-              <Button marginTop="5px">Inicio</Button>
-            </Link>
-          </li>
-          <li>
-            <a href="https://awesome-brattain-e95477.netlify.app/admin">
-              <Button marginTop="5px">Admin</Button>
-            </a>
-          </li>
-          <li>
-            <a href="#logout" onClick={e => {
-              e.preventDefault()
-              logout()
-            }}>
-              <Button marginTop="5px">Salir</Button>
-            </a>
-          </li>
-        </ul>
+          <Link to="/">
+            <Button marginTop="5px">Inicio</Button>
+          </Link>
+          <a href="https://awesome-brattain-e95477.netlify.app/admin">
+            <Button marginTop="5px">Admin</Button>
+          </a>
+          <a href="#logout" onClick={e => {
+            e.preventDefault()
+            logout()
+          }}>
+            <Button marginTop="5px">Salir</Button>
+          </a>
       </Layout>
     )
   }

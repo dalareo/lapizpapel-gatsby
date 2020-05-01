@@ -7,7 +7,6 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Button from "../components/button"
-import { rhythm, scale } from "../utils/typography"
 
 function UnitTemplate ({ data, pageContext, location }) {
   const unit = data.mdx
@@ -21,48 +20,23 @@ function UnitTemplate ({ data, pageContext, location }) {
         description={unit.frontmatter.description || unit.excerpt}
       />
       <h1>{unit.frontmatter.title}</h1>
-      <p
-        style={{
-          ...scale(-1 / 5),
-          display: `block`,
-          marginBottom: rhythm(1),
-          marginTop: rhythm(-1),
-        }}
-      >
+      <p>
         {unit.frontmatter.date}
       </p>
       <MDXRenderer>{unit.body}</MDXRenderer>
-      <hr
-        style={{
-          marginBottom: rhythm(1),
-        }}
-      />
+      <hr/>
       <Bio />
+        {previous && (
+          <Link to={`units${previous.fields.slug}`} rel="prev">
+            <Button>← {previous.frontmatter.title}</Button>
+          </Link>
+        )}
 
-      <ul
-        style={{
-          display: `flex`,
-          flexWrap: `wrap`,
-          justifyContent: `space-between`,
-          listStyle: `none`,
-          padding: 0,
-        }}
-      >
-        <li>
-          {previous && (
-            <Link to={`units${previous.fields.slug}`} rel="prev">
-              <Button>← {previous.frontmatter.title}</Button>
-            </Link>
-          )}
-        </li>
-        <li>
-          {next && (
-            <Link to={`units${next.fields.slug}`} rel="next">
-              <Button>{next.frontmatter.title} →</Button>
-            </Link>
-          )}
-        </li>
-      </ul>
+        {next && (
+          <Link to={`units${next.fields.slug}`} rel="next">
+            <Button>{next.frontmatter.title} →</Button>
+          </Link>
+        )}
     </Layout>
   )
 }

@@ -1,8 +1,6 @@
-// custom typefaces
-import "typeface-montserrat"
-import "typeface-merriweather"
 import React from "react"
 import { silentAuth } from "./src/utils/auth"
+import 'semantic-ui-less/semantic.less';
 
 class SessionCheck extends React.Component {
   constructor(props) {

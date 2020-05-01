@@ -14,33 +14,19 @@ function IndexPage ({ location }) {
           title="Inicio"
           keywords={[`cms`, `gatsby`]}
         />
-        <img style={{ margin: 0 }} src="./lapiz-papel.jpg" alt="Lapiz y papel" />
+        <img className="ui image large" src="./lapiz-papel.jpg" alt="Lapiz y papel" />
         <h1>
           Hola!
         </h1>
         <p>Esta es una prueba de concepto para un LMS low-cost.</p>
         <p>La página está construida con Gatsby, el contenido se gestiona con Netlify CMS</p>
         <p>¡Construyamos algo maravilloso!</p>
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            <Link to="/units/">
-              <Button marginTop="35px">Contenidos</Button>
-            </Link>
-          </li>
-          <li>
-            <Link to="/editor/">
-              <Button marginTop="35px">Editor</Button>
-            </Link>
-          </li>
-        </ul>
+          <Link to="/units/">
+            <Button marginTop="35px">Contenidos</Button>
+          </Link>
+          <Link to="/editor/">
+            <Button marginTop="35px">Editor</Button>
+          </Link>
       </Layout>
     )
   }
