@@ -1,5 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
+import styled from "styled-components"
+
+import { rhythm, scale } from "../utils/typography"
 
 function Layout ( { location, title, children }) {
   const rootPath = `${__PATH_PREFIX__}/`
@@ -8,8 +11,19 @@ function Layout ( { location, title, children }) {
 
   if (location.pathname === rootPath || location.pathname === unitPath) {
     header = (
-      <h1>
-        <Link 
+      <h1
+        style={{
+          ...scale(1.5),
+          marginBottom: rhythm(1.5),
+          marginTop: 0,
+        }}
+      >
+        <Link
+          style={{
+            boxShadow: `none`,
+            textDecoration: `none`,
+            color: `inherit`,
+          }}
           to={location.pathname === unitPath ? `/units/` : `/`}
         >
           {title}
@@ -18,8 +32,18 @@ function Layout ( { location, title, children }) {
     )
   } else {
     header = (
-      <h3>
+      <h3
+        style={{
+          fontFamily: `Montserrat, sans-serif`,
+          marginTop: 0,
+        }}
+      >
         <Link
+          style={{
+            boxShadow: `none`,
+            textDecoration: `none`,
+            color: `inherit`,
+          }}
           to={`/units/`}
         >
           {title}
@@ -28,22 +52,34 @@ function Layout ( { location, title, children }) {
     )
   }
   return (
-      <div className="ui container"
-      style={{
-        marginTop: `50px`,
-      }}
+    <Wrapper>
+      <div
+        style={{
+          marginLeft: `auto`,
+          marginRight: `auto`,
+          maxWidth: rhythm(24),
+          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+        }}
       >
-      <div>
-        <div className="ui header center">{header}</div>
-        <div>{children}</div>
+        <header>{header}</header>
+        <main>{children}</main>
       </div>
-      <div>
+      <Footer>
         © {new Date().getFullYear()}, Built by
         {` `}
         <a href="https://dalareo.github.io">David A. Lareo</a>
-      </div>
-    </div>
+      </Footer>
+    </Wrapper>
   )
 }
+
+const Wrapper = styled.div`
+  min-height: 100vh;
+`
+
+const Footer = styled.footer`
+  text-align: center;
+  margin: 24px;
+`
 
 export default Layout
