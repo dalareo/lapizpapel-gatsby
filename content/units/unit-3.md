@@ -5,5 +5,3 @@ thumbnail: null
 description: null
 ---
 Esta es la unidad didáctica número 3.
-
-Añadimos contenido
