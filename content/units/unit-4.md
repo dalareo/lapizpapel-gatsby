@@ -1,8 +1,7 @@
 ---
-title: Unidad 4
-description: ''
-date: '2020-05-04'
+title: Unit 4
+description: Breve descripción
+thumbnail: 'http://imageurl'
+date: '2020-05-04T14:00:19.463Z'
 ---
-Esta es la unidad dicáctica número 4.
-
-Ha sido creada directamente en la aplicación.
+Esta es una nueva unidad. Por favor escribe el contenido.
