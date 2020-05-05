@@ -44,7 +44,22 @@ module.exports = {
           hidden: process.env.NODE_ENV === "production",
           position: "displace",
         },
-        plugins: ['gatsby-tinacms-git', 'gatsby-tinacms-mdx'],
+        plugins: [
+          'gatsby-tinacms-mdx',
+          {
+            resolve: 'gatsby-tinacms-git',
+            options: {
+              //pathToRepo: `process.cwd()`,
+              //pathToContent: 'packages/demo-gatsby',
+              defaultCommitMessage: 'Edited with TinaCMS inline',
+              defaultCommitName: 'lapizpapel local commit',
+              defaultCommitEmail: 'dalareo@gmail.com',
+              pushOnCommit: false,
+              gitRemote: process.env.CONTENTS_REPO,
+              sshKey: process.env.SSH_KEY
+            },
+          },
+        ],
       },
     },
     {

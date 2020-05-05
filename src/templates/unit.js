@@ -1,7 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import {mdxForm} from "gatsby-tinacms-mdx"
+import {mdxForm, DeleteAction} from "gatsby-tinacms-mdx"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -69,6 +69,7 @@ function UnitTemplate ({ data, pageContext, location }) {
 
 const UnitForm = {
   label: 'Unit',
+  actions: [DeleteAction],
   fields: [
     {
       label: 'Title',
