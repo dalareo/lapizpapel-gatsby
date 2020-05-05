@@ -2,6 +2,6 @@
 title: Unidad 3
 date: '2019-03-19T19:31:20.591Z'
 thumbnail: null
-description: null
+description: Unidad didáctica 3
 ---
-Esta es la unidad didáctica número 3.
+Este es el contenido de la unidad didáctica número 3.
