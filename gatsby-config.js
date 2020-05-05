@@ -46,20 +46,19 @@ module.exports = {
         },
         plugins: [
           'gatsby-tinacms-mdx',
-          'gatsby-tinacms-git',
-          /* {
+          {
             resolve: 'gatsby-tinacms-git',
             options: {
-              pathToRepo: `${__dirname}`,
-              pathToContent: `.`,
-              defaultCommitMessage: 'Edited with TinaCMS inline',
-              defaultCommitName: 'TinaCMS',
-              defaultCommitEmail: 'dalareo@gmail.com',
-              pushOnCommit: true,
-              gitRemote: process.env.CONTENTS_REPO,
-              sshKey: process.env.SSH_KEY
+              //pathToRepo: `${__dirname}`,
+              //pathToContent: `.`,
+              //defaultCommitMessage: 'Edited with TinaCMS inline',
+              //defaultCommitName: 'TinaCMS',
+              //defaultCommitEmail: 'dalareo@gmail.com',
+              pushOnCommit: false,
+              //gitRemote: process.env.CONTENTS_REPO,
+              //sshKey: process.env.SSH_KEY
             },
-          }, */
+          },
         ],
       },
     },
