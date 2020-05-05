@@ -1,0 +1,8 @@
+# Ignore everything
+*
+
+# But the contents
+!.gitignore
+!content/
+!content/*
+
