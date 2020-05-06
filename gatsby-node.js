@@ -5,6 +5,8 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
   const Unit = path.resolve(`./src/templates/unit.js`)
+  const Course = path.resolve(`./src/templates/course.js`)
+
   return graphql(
     `
       {
@@ -19,8 +21,14 @@ exports.createPages = ({ graphql, actions }) => {
               }
               frontmatter {
                 title
+                courses
               }
             }
+          }
+        }
+        coursesGroup: allMdx(limit: 2000) {
+          group(field: frontmatter___courses) {
+            fieldValue
           }
         }
       }
@@ -44,6 +52,19 @@ exports.createPages = ({ graphql, actions }) => {
           slug: unit.node.fields.slug,
           previous,
           next,
+        },
+      })
+    })
+
+    // Extract courses data from query
+    const courses = result.data.coursesGroup.group
+    // Make course pages
+    courses.forEach(course => {
+      createPage({
+        path: `courses/${course.fieldValue}`,
+        component: Course,
+        context: {
+          course: course.fieldValue,
         },
       })
     })

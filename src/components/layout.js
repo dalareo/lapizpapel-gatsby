@@ -24,7 +24,7 @@ function Layout ( { location, title, children }) {
             textDecoration: `none`,
             color: `inherit`,
           }}
-          to={location.pathname === unitPath ? `/units/` : `/`}
+          to={location.pathname === unitPath ? `/courses/` : `/`}
         >
           {title}
         </Link>
@@ -44,7 +44,7 @@ function Layout ( { location, title, children }) {
             textDecoration: `none`,
             color: `inherit`,
           }}
-          to={`/units/`}
+          to={`/courses/`}
         >
           {title}
         </Link>

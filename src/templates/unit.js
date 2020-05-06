@@ -1,7 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-
+import { login, isAuthenticated } from "../utils/auth"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -9,8 +9,12 @@ import Button from "../components/button"
 import { rhythm, scale } from "../utils/typography"
 
 function UnitTemplate ({ data, pageContext, location }) {
-  const unit = data.mdx
+  if (!isAuthenticated()) {
+    login()
+    return <p>Redirecting to login...</p>
+  }
   const siteTitle = data.site.siteMetadata.title
+  const unit = data.mdx
   const { previous, next } = pageContext
 
   return (

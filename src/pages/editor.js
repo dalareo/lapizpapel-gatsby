@@ -24,7 +24,7 @@ function Editor({ location }) {
           </Link>
         </li>
         <li>
-          <Link to="/units/">
+          <Link to="/courses/">
             <Button marginTop="5px">Contenidos</Button>
           </Link>
         </li>

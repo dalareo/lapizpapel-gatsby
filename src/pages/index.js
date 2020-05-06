@@ -31,7 +31,7 @@ function IndexPage ({ location }) {
           }}
         >
           <li>
-            <Link to="/units/">
+            <Link to="/courses/">
               <Button marginTop="35px">Contenidos</Button>
             </Link>
           </li>
