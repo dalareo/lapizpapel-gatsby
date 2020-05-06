@@ -61,6 +61,7 @@
   },
   "scripts": {
     "build": "gatsby build",
+    "forestry:preview": "gatsby develop -H 0.0.0.0 -p 8080",
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
