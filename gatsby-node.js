@@ -39,6 +39,7 @@ exports.createPages = ({ graphql, actions }) => {
                 title
                 code
               }
+              body
             }
           }
         }
@@ -76,7 +77,9 @@ exports.createPages = ({ graphql, actions }) => {
         component: Course,
         context: {
           slug: course.node.fields.slug,
-          code: course.node.frontmatter.code
+          code: course.node.frontmatter.code,
+          title: course.node.frontmatter.title,
+          body: course.node.body
         },
       })
     })

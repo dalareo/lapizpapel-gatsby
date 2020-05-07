@@ -1,11 +1,11 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import { login, logout, isAuthenticated } from "../utils/auth"
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Button from "../components/button"
 import { rhythm } from "../utils/typography"
+import { MDXRenderer } from "gatsby-plugin-mdx"
 
 function CourseTemplate ({ location, pageContext, data }) {  
   if (!isAuthenticated()) {
@@ -14,15 +14,18 @@ function CourseTemplate ({ location, pageContext, data }) {
   }
   const siteTitle = data.site.siteMetadata.title
   const { edges } = data.allMdx
-
+  const title = pageContext.title
+  const body = pageContext.body
   return (
     <Layout location={location} title={siteTitle}>
-    <SEO title="All units" />
-    <Bio />
+    <SEO title={title} />
+    <h1>{title}</h1>
+    <MDXRenderer>{body}</MDXRenderer>
     <div style={{ margin: "20px 0 40px" }}>
       {edges.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
+          
           <div key={node.fields.slug}>
             <h3
               style={{
@@ -36,7 +39,6 @@ function CourseTemplate ({ location, pageContext, data }) {
                 {title}
               </Link>
             </h3>
-            <small>{node.frontmatter.date}</small>
             <p
               dangerouslySetInnerHTML={{
                 __html: node.frontmatter.description || node.excerpt,
@@ -56,8 +58,8 @@ function CourseTemplate ({ location, pageContext, data }) {
       }}
     >
       <li>
-        <Link to="/">
-          <Button marginTop="5px">Inicio</Button>
+        <Link to="/courses/">
+          <Button marginTop="5px">Contenidos</Button>
         </Link>
       </li>
       <li>

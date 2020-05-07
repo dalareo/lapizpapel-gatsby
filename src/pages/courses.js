@@ -1,10 +1,10 @@
 import React from "react"
 import SEO from "../components/seo"
 import { login, logout, isAuthenticated } from "../utils/auth"
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import { Link, graphql } from "gatsby"
 import Button from "../components/button"
+import { rhythm } from "../utils/typography"
 
 function Courses ({ data, location}) {
   if (!isAuthenticated()) {
@@ -16,19 +16,28 @@ function Courses ({ data, location}) {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="All courses" />
-      <Bio />
+      <SEO title="Cursos" />
       <div>
         <h1>Cursos</h1>
         <ul>
           {courses.map(({ node }) => {
             const title = node.frontmatter.title || node.fields.slug
-            const description = node.frontmatter.description || ``
+            const description = node.frontmatter.description || node.excerpt
             return (
               <li key={node.fields.slug}>
-                <Link to={`courses${node.fields.slug}`}>
-                  {title}
-                </Link>
+                <h3
+                  style={{
+                    marginBottom: rhythm(1 / 4),
+                  }}
+                >
+                  <Link 
+                    style={{ boxShadow: `none` }}
+                    to={`courses${node.fields.slug}`}
+                  >
+
+                      {title}
+                  </Link>
+                </h3>
                 <div>{description}</div>
               </li>
             ) 

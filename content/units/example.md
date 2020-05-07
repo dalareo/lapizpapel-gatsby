@@ -2,7 +2,7 @@
 title: MDX!
 date: "2019-10-22"
 thumbnail: null
-description: "A post showing MDX in action"
+description: 
 courses: ["course-1", "course-2", "course-3"]
 ---
 

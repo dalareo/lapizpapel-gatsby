@@ -1,8 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import { login, isAuthenticated } from "../utils/auth"
-import Bio from "../components/bio"
+import { login, logout, isAuthenticated } from "../utils/auth"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Button from "../components/button"
@@ -32,7 +31,6 @@ function UnitTemplate ({ data, pageContext, location }) {
           marginTop: rhythm(-1),
         }}
       >
-        {unit.frontmatter.date}
       </p>
       <MDXRenderer>{unit.body}</MDXRenderer>
       <hr
@@ -40,7 +38,6 @@ function UnitTemplate ({ data, pageContext, location }) {
           marginBottom: rhythm(1),
         }}
       />
-      <Bio />
 
       <ul
         style={{
@@ -58,6 +55,24 @@ function UnitTemplate ({ data, pageContext, location }) {
             </Link>
           )}
         </li>
+        <li>
+          <Link to="/courses/">
+            <Button>Contenidos</Button>
+          </Link>
+        </li>
+        <li>
+        <a href="https://awesome-brattain-e95477.netlify.app/admin">
+          <Button>Admin</Button>
+        </a>
+      </li>
+      <li>
+        <a href="#logout" onClick={e => {
+          e.preventDefault()
+          logout()
+        }}>
+          <Button>Salir</Button>
+        </a>
+      </li>
         <li>
           {next && (
             <Link to={`units${next.fields.slug}`} rel="next">
