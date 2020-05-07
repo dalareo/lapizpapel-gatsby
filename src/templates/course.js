@@ -81,28 +81,23 @@ function CourseTemplate ({ location, pageContext, data }) {
 export default CourseTemplate
 
 export const pageQuery = graphql`
-  query($course: String) {
+  query ($code: String) {
     site {
       siteMetadata {
         title
       }
     }
-    allMdx(
-      limit: 2000
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { courses: { in: [$course] } } }
-    ) {
-      totalCount
+    allMdx(filter: {collection: {eq: "units"}, frontmatter: {courses: {in: [$code]}}}, limit: 2000, sort: {fields: frontmatter___date, order: ASC}) {
       edges {
         node {
+          frontmatter {
+            title
+            description
+            date(formatString: "MMMM DD, YYYY")
+          }
           excerpt
           fields {
             slug
-          }
-          frontmatter {
-            title
-            date(formatString: "MMMM DD, YYYY")
-            description
           }
         }
       }

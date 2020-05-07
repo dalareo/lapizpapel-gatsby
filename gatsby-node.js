@@ -10,8 +10,9 @@ exports.createPages = ({ graphql, actions }) => {
   return graphql(
     `
       {
-        allMdx(
+        units: allMdx(
           sort: { fields: [frontmatter___date], order: DESC }
+          filter: { collection: { eq: "units" }}
           limit: 1000
         ) {
           edges {
@@ -26,9 +27,19 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
         }
-        coursesGroup: allMdx(limit: 2000) {
-          group(field: frontmatter___courses) {
-            fieldValue
+        courses: allMdx(
+          filter: { collection: { eq: "courses" }}
+        ) {
+          edges {
+            node {
+              fields {
+                slug
+              }
+              frontmatter {
+                title
+                code
+              }
+            }
           }
         }
       }
@@ -39,7 +50,7 @@ exports.createPages = ({ graphql, actions }) => {
     }
 
     // Create units pages.
-    const units = result.data.allMdx.edges
+    const units = result.data.units.edges
 
     units.forEach((unit, index) => {
       const previous = index === units.length - 1 ? null : units[index + 1].node
@@ -57,14 +68,15 @@ exports.createPages = ({ graphql, actions }) => {
     })
 
     // Extract courses data from query
-    const courses = result.data.coursesGroup.group
+    const courses = result.data.courses.edges
     // Make course pages
     courses.forEach(course => {
       createPage({
-        path: `courses/${course.fieldValue}`,
+        path: `courses${course.node.fields.slug}`,
         component: Course,
         context: {
-          course: course.fieldValue,
+          slug: course.node.fields.slug,
+          code: course.node.frontmatter.code
         },
       })
     })
@@ -77,14 +89,14 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === `Mdx`) {
-    const value = createFilePath({ node, getNode })
     createNodeField({
       name: `slug`,
       node,
-      value,
+      value: createFilePath({ node, getNode }),
     })
+    node.collection = getNode(node.parent).sourceInstanceName;
+    }
   }
-}
 
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   if (stage === "build-html") {

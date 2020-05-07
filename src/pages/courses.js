@@ -12,7 +12,7 @@ function Courses ({ data, location}) {
     return <p>Redirecting to login...</p>
   }
   const siteTitle = data.site.siteMetadata.title
-  const courses = data.allMdx.group
+  const courses = data.allMdx.edges
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -21,13 +21,18 @@ function Courses ({ data, location}) {
       <div>
         <h1>Cursos</h1>
         <ul>
-          {courses.map(course => (
-            <li key={course.fieldValue}>
-              <Link to={`courses/${course.fieldValue}`}>
-                {course.fieldValue} ({course.totalCount})
-              </Link>
-            </li>
-          ))}
+          {courses.map(({ node }) => {
+            const title = node.frontmatter.title || node.fields.slug
+            const description = node.frontmatter.description || ``
+            return (
+              <li key={node.fields.slug}>
+                <Link to={`courses${node.fields.slug}`}>
+                  {title}
+                </Link>
+                <div>{description}</div>
+              </li>
+            ) 
+          })}
         </ul>
       </div>
       <ul
@@ -71,10 +76,22 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMdx(limit: 2000) {
-      group(field: frontmatter___courses) {
-        fieldValue
-        totalCount
+    allMdx(
+      limit: 2000, 
+      filter: { collection: { eq: "courses" }}
+      sort: { fields: [fields___slug]}
+    ) {
+      edges {
+        node {
+          excerpt
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            description
+          }
+        }
       }
     }
   }
