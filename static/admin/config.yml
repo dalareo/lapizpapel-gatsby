@@ -16,3 +16,14 @@ collections:
       - { name: thumbnail, label: Featured Image, widget: image }
       - { name: courses, label: Courses }
       - { name: body, label: Body, widget: markdown }
+  - name: courses
+    label: Courses
+    folder: content/courses
+    create: true
+    fields:
+      - { name: date, label: Date, widget: date }
+      - { name: title, label: Title }
+      - { name: description, label: Description }
+      - { name: thumbnail, label: Featured Image, widget: image }
+      - { name: code, label: Code }
+      - { name: body, label: Body, widget: markdown }
