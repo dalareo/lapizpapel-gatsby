@@ -2,7 +2,7 @@
   "name": "lapizpapel-gatsby",
   "private": true,
   "description": "Una propuesta de e-learning de bajo coste con Gatsby",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "David A. Lareo <dalareo@gmail.com>",
   "dependencies": {
     "@mdx-js/mdx": "^1.5.1",
@@ -43,7 +43,8 @@
     "typography-theme-wordpress-2016": "^0.16.19"
   },
   "devDependencies": {
-    "prettier": "^1.17.0"
+    "prettier": "^1.17.0",
+    "standard-version": "^8.0.0"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
   "keywords": [
@@ -61,6 +62,7 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+    "release": "standard-version"
   }
 }
