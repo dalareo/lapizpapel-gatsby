@@ -2,7 +2,7 @@
   "name": "lapizpapel-gatsby",
   "private": true,
   "description": "Una propuesta de e-learning de bajo coste con Gatsby",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "David A. Lareo <dalareo@gmail.com>",
   "dependencies": {
     "@auth0/auth0-react": "^1.2.0",
