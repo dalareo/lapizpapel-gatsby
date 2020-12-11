@@ -1,9 +1,10 @@
 ---
-title: Unidad 1
 date: 2019-03-17T19:31:20.591Z
-thumbnail: null
-description:
-courses: ["course-1"] 
+title: Unidad 1
+description: Unit 1 description
+thumbnail: assets/paul-hanaoka-bj25b9sonus-unsplash.jpg
+courses:
+  - course-1
 ---
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut enim eget turpis venenatis scelerisque quis sed ipsum. Quisque dui turpis, rutrum non odio tempus, gravida hendrerit quam. Pellentesque euismod ultrices dui ut egestas. Ut euismod nisl non felis blandit, nec mollis erat blandit. Sed et tempus dolor. Aliquam eget elementum sapien, at gravida risus. Suspendisse sed lectus vitae sapien condimentum pharetra et sed est. Nam cursus odio eget egestas bibendum. Nulla tincidunt vel odio a efficitur. Aenean et rutrum velit. Donec suscipit blandit convallis. In nec cursus massa, a mollis massa. Integer in vulputate ipsum.
 

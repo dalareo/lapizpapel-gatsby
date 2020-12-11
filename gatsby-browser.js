@@ -1,34 +1,21 @@
 // custom typefaces
-import "typeface-montserrat"
-import "typeface-merriweather"
-import React from "react"
-import { silentAuth } from "./src/utils/auth"
+import "typeface-montserrat";
+import "typeface-merriweather";
+import React from "react";
+import { Auth0Provider } from '@auth0/auth0-react';
+import { navigate } from 'gatsby';
 
-class SessionCheck extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      loading: true,
-    }
-  }
-
-  handleCheckSession = () => {
-    this.setState({ loading: false })
-  }
-
-  componentDidMount() {
-    silentAuth(this.handleCheckSession)
-  }
-
-  render() {
-    return (
-      this.state.loading === false && (
-        <React.Fragment>{this.props.children}</React.Fragment>
-      )
-    )
-  }
-}
+const onRedirectCallback = (appState) => navigate(appState?.returnTo || '/');
 
 export const wrapRootElement = ({ element }) => {
-  return <SessionCheck>{element}</SessionCheck>
-}
+  return (
+    <Auth0Provider
+      domain={process.env.GATSBY_AUTH0_DOMAIN}
+      clientId={process.env.GATSBY_AUTH0_CLIENTID}
+      redirectUri={window.location.origin}
+      onRedirectCallback={onRedirectCallback}
+    >
+      {element}
+    </Auth0Provider>
+  );
+};

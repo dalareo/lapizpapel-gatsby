@@ -1,79 +1,61 @@
 import React from "react"
 import SEO from "../components/seo"
-import { login, logout, isAuthenticated } from "../utils/auth"
+import { useAuth0 } from '@auth0/auth0-react';
 import Layout from "../components/layout"
+import Menu from "../components/menu"
 import { Link, graphql } from "gatsby"
-import Button from "../components/button"
 import { rhythm } from "../utils/typography"
 
 function Courses ({ data, location}) {
-  if (!isAuthenticated()) {
-    login()
-    return <p>Redirecting to login...</p>
+  const { isAuthenticated, isLoading, loginWithRedirect, error } = useAuth0();
+  if (isLoading) {
+    return <div>Loading ...</div>;
   }
-  const siteTitle = data.site.siteMetadata.title
-  const courses = data.allMdx.edges
+  if (error) {
+    return <div>Oops... {error.message}</div>;
+  }
+  if (!isAuthenticated) {
+    return loginWithRedirect()
+  } else {
+    const siteTitle = data.site.siteMetadata.title
+    const courses = data.allMdx.edges
 
-  return (
-    <Layout location={location} title={siteTitle}>
-      <SEO title="Cursos" />
-      <div>
-        <h1>Cursos</h1>
-        <ul>
-          {courses.map(({ node }) => {
-            const title = node.frontmatter.title || node.fields.slug
-            const description = node.frontmatter.description || node.excerpt
-            return (
-              <li key={node.fields.slug}>
-                <h3
-                  style={{
-                    marginBottom: rhythm(1 / 4),
-                  }}
-                >
-                  <Link 
-                    style={{ boxShadow: `none` }}
-                    to={`courses${node.fields.slug}`}
-                  >
+    return (
+      isAuthenticated && (
+        <Layout location={location} title={siteTitle}>
+          <SEO title="Cursos" />
+          <div>
+            <h1>Cursos</h1>
+            <ul>
+              {courses.map(({ node }) => {
+                const title = node.frontmatter.title || node.fields.slug
+                const description = node.frontmatter.description || node.excerpt
+                return (
+                  <li key={node.fields.slug}>
+                    <h3
+                      style={{
+                        marginBottom: rhythm(1 / 4),
+                      }}
+                    >
+                      <Link 
+                        style={{ boxShadow: `none` }}
+                        to={`/courses${node.fields.slug}`}
+                      >
 
-                      {title}
-                  </Link>
-                </h3>
-                <div>{description}</div>
-              </li>
-            ) 
-          })}
-        </ul>
-      </div>
-      <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            <Link to="/">
-              <Button marginTop="5px">Inicio</Button>
-            </Link>
-          </li>
-          <li>
-            <a href="https://awesome-brattain-e95477.netlify.app/admin">
-              <Button marginTop="5px">Admin</Button>
-            </a>
-          </li>
-          <li>
-            <a href="#logout" onClick={e => {
-              e.preventDefault()
-              logout()
-            }}>
-              <Button marginTop="5px">Salir</Button>
-            </a>
-          </li>
-        </ul>
-    </Layout>
-  )
+                          {title}
+                      </Link>
+                    </h3>
+                    <div>{description}</div>
+                  </li>
+                ) 
+              })}
+            </ul>
+          </div>
+          <Menu />
+        </Layout>
+      )
+    )
+  }
 }
 
 export default Courses

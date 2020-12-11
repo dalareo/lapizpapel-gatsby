@@ -1,13 +1,13 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
-exports.createPages = ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   const Unit = path.resolve(`./src/templates/unit.js`)
   const Course = path.resolve(`./src/templates/course.js`)
 
-  return graphql(
+  const result = await graphql(
     `
       {
         units: allMdx(
@@ -45,10 +45,7 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     `
-  ).then(result => {
-    if (result.errors) {
-      throw result.errors
-    }
+  );
 
     // Create units pages.
     const units = result.data.units.edges
@@ -58,12 +55,12 @@ exports.createPages = ({ graphql, actions }) => {
       const next = index === 0 ? null : units[index - 1].node
 
       createPage({
-        path: `units${unit.node.fields.slug}`,
+        path: `/units${unit.node.fields.slug}`,
         component: Unit,
         context: {
           slug: unit.node.fields.slug,
           previous,
-          next,
+          next
         },
       })
     })
@@ -73,7 +70,7 @@ exports.createPages = ({ graphql, actions }) => {
     // Make course pages
     courses.forEach(course => {
       createPage({
-        path: `courses${course.node.fields.slug}`,
+        path: `/courses${course.node.fields.slug}`,
         component: Course,
         context: {
           slug: course.node.fields.slug,
@@ -83,9 +80,6 @@ exports.createPages = ({ graphql, actions }) => {
         },
       })
     })
-
-    return null
-  })
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

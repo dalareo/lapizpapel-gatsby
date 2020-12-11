@@ -67,7 +67,7 @@ function Layout ( { location, title, children }) {
       <Footer>
         © {new Date().getFullYear()}, Built by
         {` `}
-        <a href="https://dalareo.github.io">David A. Lareo</a>
+        <a href="https://lareo.eu">David A. Lareo</a>
       </Footer>
     </Wrapper>
   )

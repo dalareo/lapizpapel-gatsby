@@ -34,8 +34,7 @@ function Bio() {
               }}
             />
             <p>
-              Creado por <strong>{author}</strong>, un filósofo empeñado en hacer cosas con
-              unos y ceros.
+              Creado por <strong>{author}</strong>, un filósofo con la cabeza en las nubes.
               {` `}
               <a href={`https://twitter.com/${social.twitter}`}>
                 Twitter
