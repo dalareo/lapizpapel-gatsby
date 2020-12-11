@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [0.0.5](https://github.com/gatsbyjs/gatsby-starter-blog/compare/v0.0.4...v0.0.5) (2020-12-11)
 
-### [0.0.4](https://github.com/gatsbyjs/gatsby-starter-blog/compare/v0.0.3...v0.0.4) (2020-12-11)
+
 
 
 ### Features
@@ -34,3 +34,12 @@ All notable changes to this project will be documented in this file. See [standa
 * Courses basic feature
 * Fake content with Loren Ipsum
 * Standard Version Changelog Support
+
+### 0.0.5 (2020-12-11)
+
+#### Bugs
+* Auth0 not allowing hot reload browser
+
+#### Features
+* Admin app with local environment
+* Added menu component
