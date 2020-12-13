@@ -8,6 +8,7 @@ import { navigate } from 'gatsby';
 const onRedirectCallback = (appState) => navigate(appState?.returnTo || '/');
 
 export const wrapRootElement = ({ element }) => {
+
   return (
     <Auth0Provider
       domain={process.env.GATSBY_AUTH0_DOMAIN}
