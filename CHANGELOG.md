@@ -2,10 +2,6 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### Features
-
-* add automatic changelog ([834d3a7](https://github.com/gatsbyjs/gatsby-starter-blog/commit/834d3a73b7ffdfb649b6cad96897adbf8563ae09))
-
 ### 0.0.1 (2020-04-28)
 
 #### Features
