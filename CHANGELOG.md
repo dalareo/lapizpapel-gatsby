@@ -2,15 +2,6 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [0.1.0](https://github.com/gatsbyjs/gatsby-starter-blog/compare/v0.0.5...v0.1.0) (2020-12-16)
-
-
-### ⚠ BREAKING CHANGES
-
-* remove wysiwyg editor
-
-* remove wysiwyg editor ([a9d3e25](https://github.com/gatsbyjs/gatsby-starter-blog/commit/a9d3e253b11f2e7803682ae8c5098e1806d95bd8))
-
 ### 0.0.1 (2020-04-28)
 
 #### Features
@@ -43,3 +34,9 @@ All notable changes to this project will be documented in this file. See [standa
 #### Features
 * Admin app with local environment
 * Added menu component
+
+### 0.1.0 (2020-12-16)
+
+### ⚠ BREAKING CHANGES
+
+* remove wysiwyg editor
