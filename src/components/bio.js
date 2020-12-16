@@ -34,11 +34,10 @@ function Bio() {
               }}
             />
             <p>
-              Creado por <strong>{author}</strong>, un filósofo con la cabeza en las nubes.
+              Creado por <strong>{author}</strong>, un filósofo con la cabeza en
+              las nubes.
               {` `}
-              <a href={`https://twitter.com/${social.twitter}`}>
-                Twitter
-              </a>
+              <a href={`https://twitter.com/${social.twitter}`}>Twitter</a>
             </p>
           </Container>
         )

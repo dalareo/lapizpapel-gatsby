@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 import { rhythm, scale } from "../utils/typography"
 
-function Layout ( { location, title, children }) {
+function Layout({ location, title, children }) {
   const rootPath = `${__PATH_PREFIX__}/`
   const unitPath = `${__PATH_PREFIX__}/units/`
   let header

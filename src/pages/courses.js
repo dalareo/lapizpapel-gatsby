@@ -1,19 +1,19 @@
 import React from "react"
 import SEO from "../components/seo"
-import { useAuth0,withAuthenticationRequired } from '@auth0/auth0-react';
+import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react"
 import Layout from "../components/layout"
 import Menu from "../components/menu"
 import { Link, graphql } from "gatsby"
 import { rhythm } from "../utils/typography"
 
-function Courses ({ data, location}) {
-  const { isAuthenticated, isLoading, error } = useAuth0();
+function Courses({ data, location }) {
+  const { isAuthenticated, isLoading, error } = useAuth0()
   if (isLoading) {
-    return <div>Loading ...</div>;
+    return <div>Loading ...</div>
   }
   if (error) {
-    return <div>Oops... {error.message}</div>;
-  } 
+    return <div>Oops... {error.message}</div>
+  }
 
   const siteTitle = data.site.siteMetadata.title
   const courses = data.allMdx.edges
@@ -35,17 +35,16 @@ function Courses ({ data, location}) {
                       marginBottom: rhythm(1 / 4),
                     }}
                   >
-                    <Link 
+                    <Link
                       style={{ boxShadow: `none` }}
                       to={`/courses${node.fields.slug}`}
                     >
-
-                        {title}
+                      {title}
                     </Link>
                   </h3>
                   <div>{description}</div>
                 </li>
-              ) 
+              )
             })}
           </ul>
         </div>
@@ -57,7 +56,7 @@ function Courses ({ data, location}) {
 
 export default withAuthenticationRequired(Courses, {
   onRedirecting: () => <div>Loading ...</div>,
-});
+})
 
 export const pageQuery = graphql`
   query {
@@ -67,9 +66,9 @@ export const pageQuery = graphql`
       }
     }
     allMdx(
-      limit: 2000, 
-      filter: { collection: { eq: "courses" }}
-      sort: { fields: [fields___slug]}
+      limit: 2000
+      filter: { collection: { eq: "courses" } }
+      sort: { fields: [fields___slug] }
     ) {
       edges {
         node {

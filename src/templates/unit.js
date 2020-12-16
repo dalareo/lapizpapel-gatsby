@@ -1,18 +1,19 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import { useAuth0,withAuthenticationRequired } from '@auth0/auth0-react';import Layout from "../components/layout"
+import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react"
+import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Menu from "../components/menu"
 import { rhythm, scale } from "../utils/typography"
 
-function UnitTemplate ({ data, pageContext, location }) {
-  const { isAuthenticated, isLoading, error } = useAuth0();
+function UnitTemplate({ data, pageContext, location }) {
+  const { isAuthenticated, isLoading, error } = useAuth0()
   if (isLoading) {
-    return <div>Loading ...</div>;
+    return <div>Loading ...</div>
   }
   if (error) {
-    return <div>Oops... {error.message}</div>;
+    return <div>Oops... {error.message}</div>
   }
 
   const siteTitle = data.site.siteMetadata.title
@@ -34,8 +35,7 @@ function UnitTemplate ({ data, pageContext, location }) {
             marginBottom: rhythm(1),
             marginTop: rhythm(-1),
           }}
-        >
-        </p>
+        ></p>
         <MDXRenderer>{unit.body}</MDXRenderer>
         <hr
           style={{
@@ -74,7 +74,7 @@ function UnitTemplate ({ data, pageContext, location }) {
 
 export default withAuthenticationRequired(UnitTemplate, {
   onRedirecting: () => <div>Loading ...</div>,
-});
+})
 
 export const pageQuery = graphql`
   query UnitBySlug($slug: String!) {
